@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour {
 
-    [SerializeField] private GameObject platform;
+    [SerializeField] public GameObject Platform;
     [SerializeField] private int platformAmount;
 
     List<GameObject> platforms;
@@ -15,7 +15,7 @@ public class PlatformManager : MonoBehaviour {
 
         for(int i = 0; i < platformAmount; i++)
         {
-            GameObject obj = Instantiate(platform);
+            GameObject obj = Instantiate(Platform);
             obj.SetActive(false);
             platforms.Add(obj);
         }
@@ -30,7 +30,7 @@ public class PlatformManager : MonoBehaviour {
                 return platforms[i];
             }
         }
-        GameObject obj = Instantiate(platform);
+        GameObject obj = Instantiate(Platform);
         obj.SetActive(false);
         platforms.Add(obj);
         return obj;
