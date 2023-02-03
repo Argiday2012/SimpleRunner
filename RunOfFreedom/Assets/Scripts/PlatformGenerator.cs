@@ -11,6 +11,10 @@ public class PlatformGenerator : MonoBehaviour {
     [SerializeField] private float minDistBetweenPlatform;
     [SerializeField] private float maxDistBetweenPlatform;
 
+    public Transform MaxHeightPoint;
+    public float MaxHeightChange;
+    private float heightChange;
+
     public PlatformManager[] PlatformsM;
 
     //public GameObject[] Platforms;
@@ -37,7 +41,9 @@ public class PlatformGenerator : MonoBehaviour {
             distBetweenPlatform = Random.Range(minDistBetweenPlatform, maxDistBetweenPlatform);
             platformSelector = Random.Range(0, PlatformsM.Length);
 
-            transform.position = new Vector3(transform.position.x + platformsWidth[platformSelector] + distBetweenPlatform, transform.position.y, transform.position.z);
+            heightChange = transform.position.y + Random.Range(MaxHeightChange, -MaxHeightChange);
+
+            transform.position = new Vector3(transform.position.x + platformsWidth[platformSelector] + distBetweenPlatform, heightChange, transform.position.z);
             //Instantiate(/*platform,*/ Platforms[platformSelector], transform.position, transform.rotation);
             GameObject newPlatform = PlatformsM[platformSelector].GetPlatform();
 
